@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+  <html xmlns:th="http://www.thymeleaf.org">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../../static/css/materialize.min.css" media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="../../static/js/pagination.css" />
+  <link rel="stylesheet" href="../../static/css/home.css" />
+  <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+
+  <!--Let browser know website is optimized for mobile
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  -->
+  </head>
+
+
+
+<body >
+  <!--Import jQuery before materialize.js-->
+   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../static/js/materialize.min.js"></script>
+  <script type="text/javascript" src="../../static/js/materialize.js"></script>
+  <script type="text/javascript" src="../../static/js/worldcloud.js"></script>
+  <script type="text/javascript" src="../../static/js/echart_bar_op.js"></script>
+  <script type="text/javascript" src="../../static/js/query.js"></script>
+
+
+  <!-- <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script> -->
+       <!-- <script type="text/javascript" src="js/map_op.js"></script> -->
+
+
+<nav class=" teal darken-1" role="navigation">
+	<div class="row">
+		<div class="col s4">
+<!-- 			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">疾病分析与预测平台</a>
+		</div> -->
+	</div>
+    <!-- <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo">疾病预测分析平台</a> -->
+    <ul class="right hide-on-med-and-down">
+{#            <li><a href="#">设置</a></li>#}
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">设置<i class="material-icons right">arrow_drop_down</i></a></li>
+
+        </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+ <ul id="dropdown1" class="dropdown-content">
+  <li><a href="/origin_main">关于我们</a></li>
+{#  <li><a href="yigang.html">乙肝</a></li>#}
+{#  <li class="divider"></li>#}
+{#  <li><a href="feiyan.html">肺炎</a></li>#}
+</ul>
+
+
+
+
+  <div class="row">
+
+      <div class="carousel">
+    <a class="carousel-item" href="#"><img src="../../static/images/zhenyigan.jpg"></a>
+    <a class="carousel-item" href="#"><img src="../../static/images/liugan.jpg"></a>
+    <a class="carousel-item" href="#"><img src="../../static/images/yigan.jpg"></a>
+
+  </div>
+  <div id="Title" align="center">
+      <a href="main"  style="font-size:40px;color:#00796b;margin:0 auto" >融合网络大数据的重大及新发传染病预警预测模型</a>
+{#    <a  herf="https://www.luffycity.com" class="center-align" align="center" style="color:#00796b " >融合网络大数据的重大及新发传染病预警预测模型</a>#}
+  </div>
+
+ <div id="Company" align="center">
+    <h5  align="center" style="color:black " >北京大学医学部</h5>
+       <h5 align="center" style="color:black " >浙大一院</h5>
+       <h5  align="center" style="color:black " >国家CDC</h5>
+       <h5  align="center" style="color:black " >中山大学</h5>
+  </div>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.carousel').carousel();
+    });
+  </script>
+
+  </div>
+
+
+</body>
+
+
+</html>

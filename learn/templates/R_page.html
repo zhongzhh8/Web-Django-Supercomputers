@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="application/shiny-singletons"></script>
+<script type="application/html-dependencies">json2[2014.02.04];jquery[1.12.4];shiny[1.3.2];bootstrap[3.3.7]</script>
+<script src="shared/json2-min.js"></script>
+<script src="shared/jquery.min.js"></script>
+<link href="shared/shiny.css" rel="stylesheet" />
+<script src="shared/shiny.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="shared/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="shared/bootstrap/js/bootstrap.min.js"></script>
+<script src="shared/bootstrap/shim/html5shiv.min.js"></script>
+<script src="shared/bootstrap/shim/respond.min.js"></script>  
+<style>
+      .nop {background-color:rgb(230,230,230);margin:0px}
+      .dropdown-menu {border-top:0px;padding-top:0px}
+      .dropdown-toggle {font-size:32px}
+      .navbar-brand {font-size:36px;}
+      table {border-collapse: collapse;margin: 0px auto 15px 10px;text-align: left;width:600px;}
+      .tables {margin: 15px auto 1px 10px;}
+      table td, table th{border: 1px solid #cad9ea;color: #666;height: 30px;padding-left:11px;}
+      table thead th{background-color:rgb(210,210,210);width: 100px;}
+      table tr:nth-child(odd){background: #fff;}
+      /*table tr:nth-child(even){background: #F5FAFA;}*/
+      table tr:nth-child(even){background: rgb(250,250,250);}
+      .col-sm-12 {background-color:rgb(245,245,245);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+</style>
+<title>传染病预警预测模型</title>
+
+</head>
+
+<body>
+  <div class="container-fluid">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span class="navbar-brand">传染病预警预测模型</span>
+        </div>
+        <ul class="nav navbar-nav" data-tabsetid="2357">
+          <li class="dropdown active">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-value="数据描述">
+              数据描述
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" data-tabsetid="4453">
+              <li class="active">
+                <a href="#tab-4453-1" data-toggle="tab" data-value="监测数据">监测数据</a>
+              </li>
+              <li>
+                <a href="#tab-4453-2" data-toggle="tab" data-value="网络数据">网络数据</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-value="预警">
+              预警
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" data-tabsetid="9544">
+              <li>
+                <p class='nop' data-toggle="tab" data-value="流感">流感</p>
+              </li>
+              <li>
+                <a href="#tab-9544-2" data-toggle="tab" data-value="爆发">爆发</a>
+              </li>
+              <li>
+                <a href="#tab-9544-3" data-toggle="tab" data-value="传播">传播</a>
+              </li>
+              <li>
+                <p class='nop' data-toggle="tab" data-value="登革热">登革热</p>
+              </li>
+              <li>
+                <a href="#tab-9544-5" data-toggle="tab" data-value="爆发">爆发</a>
+              </li>
+              <li>
+                <a href="#tab-9544-6" data-toggle="tab" data-value="传播">传播</a>
+              </li>
+              <li>
+                <p class='nop' data-toggle="tab" data-value="结核病">结核病</p>
+              </li>
+              <li>
+                <a href="#tab-9544-8" data-toggle="tab" data-value="爆发">爆发</a>
+              </li>
+              <li>
+                <a href="#tab-9544-9" data-toggle="tab" data-value="传播">传播</a>
+              </li>
+              <li>
+                <p class='nop' data-toggle="tab" data-value="乙肝">乙肝</p>
+              </li>
+              <li>
+                <a href="#tab-9544-11" data-toggle="tab" data-value="爆发">爆发</a>
+              </li>
+              <li>
+                <a href="#tab-9544-12" data-toggle="tab" data-value="传播">传播</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-value="预测">
+              预测
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" data-tabsetid="2877">
+              <li>
+                <p class='nop' data-toggle="tab" data-value="流感">流感</p>
+              </li>
+              <li>
+                <a href="#tab-2877-2" data-toggle="tab" data-value="爆发">爆发</a>
+              </li>
+              <li>
+                <a href="#tab-2877-3" data-toggle="tab" data-value="传播">传播</a>
+              </li>
+              <li>
+                <p class='nop' data-toggle="tab" data-value="登革热">登革热</p>
+              </li>
+              <li>
+                <a href="#tab-2877-5" data-toggle="tab" data-value="爆发">爆发</a>
+              </li>
+              <li>
+                <a href="#tab-2877-6" data-toggle="tab" data-value="传播">传播</a>
+              </li>
+              <li>
+                <p class='nop' data-toggle="tab" data-value="结核病">结核病</p>
+              </li>
+              <li>
+                <a href="#tab-2877-8" data-toggle="tab" data-value="爆发">爆发</a>
+              </li>
+              <li>
+                <a href="#tab-2877-9" data-toggle="tab" data-value="传播">传播</a>
+              </li>
+              <li>
+                <p class='nop' data-toggle="tab" data-value="乙肝">乙肝</p>
+              </li>
+              <li>
+                <a href="#tab-2877-11" data-toggle="tab" data-value="爆发">爆发</a>
+              </li>
+              <li>
+                <a href="#tab-2877-12" data-toggle="tab" data-value="传播">传播</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <div class="tab-content" data-tabsetid="2357">
+        <div class="tab-pane active" data-value="监测数据" id="tab-4453-1"></div>
+        <div class="tab-pane" data-value="网络数据" id="tab-4453-2"></div>
+        <div class="tab-pane" data-value="流感" id="tab-9544-1"></div>
+        <div class="tab-pane" data-value="爆发" id="tab-9544-2"></div>
+        <div class="tab-pane" data-value="传播" id="tab-9544-3"></div>
+        <div class="tab-pane" data-value="登革热" id="tab-9544-4"></div>
+        <div class="tab-pane" data-value="爆发" id="tab-9544-5"></div>
+        <div class="tab-pane" data-value="传播" id="tab-9544-6"></div>
+        <div class="tab-pane" data-value="结核病" id="tab-9544-7"></div>
+        <div class="tab-pane" data-value="爆发" id="tab-9544-8"></div>
+        <div class="tab-pane" data-value="传播" id="tab-9544-9"></div>
+        <div class="tab-pane" data-value="乙肝" id="tab-9544-10"></div>
+        <div class="tab-pane" data-value="爆发" id="tab-9544-11"></div>
+        <div class="tab-pane" data-value="传播" id="tab-9544-12"></div>
+        <div class="tab-pane" data-value="流感" id="tab-2877-1"></div>
+        <div class="tab-pane" data-value="爆发" id="tab-2877-2"></div>
+        <div class="tab-pane" data-value="传播" id="tab-2877-3"></div>
+        <div class="tab-pane" data-value="登革热" id="tab-2877-4"></div>
+        <div class="tab-pane" data-value="爆发" id="tab-2877-5"></div>
+        <div class="tab-pane" data-value="传播" id="tab-2877-6"></div>
+        <div class="tab-pane" data-value="结核病" id="tab-2877-7"></div>
+        <div class="tab-pane" data-value="爆发" id="tab-2877-8"></div>
+        <div class="tab-pane" data-value="传播" id="tab-2877-9">
+          <p style='font-size:36px;color:rgb(120,120,120);'>流动人口肺结核病传播动力学模型<div>(吴汝聪)</div></p>
+          <div class="row">
+            <div class="tabbable">
+              <ul class="nav nav-tabs" data-tabsetid="7780">
+                <li class="active">
+                  <a href="#tab-7780-1" data-toggle="tab" data-value="模型介绍">模型介绍</a>
+                </li>
+                <li>
+                  <a href="#tab-7780-2" data-toggle="tab" data-value="模型使用">模型使用</a>
+                </li>
+              </ul>
+              <div class="tab-content" data-tabsetid="7780">
+                <div class="tab-pane active" data-value="模型介绍" id="tab-7780-1">
+                  <h3>基本假设</h3>
+
+<p>依据肺结核病的发病特点和传播特点构建传染病动力学模型，将总人群分为流动人口(M)和户籍人口(L)两大类，每类人群中依据肺结核病的病程特点分为5 类，分别为易感者(S)、潜伏感染者(E)、耐多药肺结核病患者(I<sub>1</sub>)、非耐多药肺结病患者(I<sub>2</sub>)、痊愈者(R)。模型构建基于以下基本假设：</p>
+
+<p>（1）模型考虑人口出生、死亡、种群迁移的动力因素。假设新补充的流动人口存在肺结核病易感者和潜伏感染者，潜伏感染者占新补充流动人口的比例为𝜃𝑚，不考虑活动性肺结核患者流动的情况。假设新补充的户籍人口均为易感者，不考虑活动性肺结核病患者落户情况；</p>
+
+<p>（2）将人群看作是均匀混合的，即所有个体之间的相互接触是等可能的；</p>
+
+<p>（3）病人与易感者接触必然具有一定的传染力。假设t 时刻的单位时间内，一个活动性肺结核病患者能传染的易感者数量与环境中易感者总数S(t)成正比，比例系数为𝛽，即t 时刻单位时间内所有病人传染的人数为𝛽S(t)I(t)；
+</p>
+<p>（4）假设单位时间内从活动性肺结核病患者中移出的人数与患者数量成正比，比例系数𝛾，即t 时刻单位时间内移出者数量为𝛾I(t)；</p>
+
+<p>（5）肺外结核及结核性胸膜炎基本不具有传染性，本模型仅考虑肺结核的情况；</p>
+
+<h3>模型结构、方程及参数</h3>
+<p>本研究模型结构示意图如下图所示：</p>
+<p>模型公式如下所示：</p>
+                  <div id="formula1" class="shiny-plot-output" style="width: 500px ;height:200px"></div>
+                  <div id="formula2" class="shiny-plot-output" style="width: 500px ;height:200px"></div>
+                  <p>模型共涉及10个变量和31个参数，流动人口数量的补充主要由于外来人口迁入，外来人口中包括易感者、潜伏感染者，引入参数𝜃<sub>m</sub>、𝛬<sub>m</sub>进行描述𝛬<sub>m</sub>为流动人口年均补充数，𝜃<sub>m</sub>𝛬<sub>m</sub>为流动人口潜伏感染者年均补充数，(1-𝜃<sub>m</sub>)𝛬<sub>m</sub>为流动人口易感者年均补充数。户籍人口数量的补充主要由于新生儿的出生，新生儿均为易感者，因此户籍人口全人群补充率𝛬<sub>l</sub>即为户籍人口易感者的补充率。模型构建过程中使用不同的参数反映耐药和非耐药的传染率，考虑到模型中参数数量多、模型复杂等情况，在对模型进行参数模拟时假设耐药与非耐药肺结核病传染率相同，即有𝛽<sub>mm1</sub>=𝛽<sub>mm2</sub>、𝛽<sub>ml1</sub>=𝛽<sub>ml2</sub>、𝛽<sub>ll1</sub>=𝛽<sub>ll2</sub>、𝛽<sub>lm1</sub>=𝛽<sub>lm2</sub>。模型变量和参数及其意义参见下表。</p>
+<div >
+    <p class="tables">表1.流动人口肺结核病传播动力学模型变量及意义</p>
+  <table>
+  <thead>
+    <tr>
+      <th>变量</th>
+      <th>意义</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr >
+      <th>S<sub>m</sub>(t)</th>
+      <th >t时刻流动人口肺结核病易感者</th>
+    </tr>
+    <tr>
+      <th>S<sub>l</sub>(t)</th>
+      <th>t时刻户籍人口肺结核病易感者</th>
+    </tr>
+     <tr>
+      <th>E<sub>m</sub>(t)</th>
+      <th>t时刻流动人口肺结核病潜伏感染者</th>
+    </tr>
+     <tr>
+      <th>E<sub>l</sub>(t)</th>
+      <th>t时刻户籍人口肺结核病潜伏感染者</th>
+    </tr>
+     <tr>
+      <th>I<sub>m1</sub>(t)</th>
+      <th>t时刻流动人口活性耐多药肺结核病患者</th>
+    </tr>
+     <tr>
+      <th>I<sub>l1</sub>(t)</th>
+      <th>t时刻户籍人口活动性耐多药肺结核病患者</th>
+    </tr>
+     <tr>
+      <th>I<sub>m2</sub>(t)</th>
+      <th>t时刻流动人口活性非耐多药肺结核病患者</th>
+    </tr>
+     <tr>
+      <th>I<sub>l2</sub>(t)</th>
+      <th>t时刻户籍人口活动性非耐多药肺结核病患者</th>
+    </tr>
+     <tr>
+      <th>R<sub>m</sub>(t)</th>
+      <th>t时刻流动人口肺结核病痊愈者</th>
+    </tr>
+     <tr>
+      <th>R<sub>l</sub>(t)</th>
+      <th>t时刻户籍人口肺结核病痊愈者</th>
+    </tr>
+     <tr>
+      <th>P<sub>m</sub>(t)</th>
+      <th>t时刻流动人口总数</th>
+    </tr>
+     <tr>
+      <th>P<sub>l</sub>(t)</th>
+      <th>t时刻户籍人口总数</th>
+    </tr>
+     <tr>
+      <th>P(t)</th>
+      <th>t时刻人口总数</th>
+    </tr>
+    
+  </tbody>
+  </table>
+  <p class="tables">表2.流动人口肺结核病传播动力学模型参数及意义</p>
+  <table>
+    <thead>
+     <tr>
+      <th>参数</th>
+      <th>意义</th>
+     </tr>
+    </thead>
+    <tbody>
+     <tr>
+      <th>&#923;<sub>m</sub></th>
+      <th>流动人口年均补充数</th>
+     </tr>
+     <tr>
+      <th>&#952;<sub>m</sub></th>
+      <th>流动人口年补充数中潜伏感染者的比例</th>
+     </tr>
+     <tr>
+      <th>&#946;<sub>mm1</sub></th>
+      <th>流动人口耐多药肺结核病患者与流动人口易感者接触的传染率</th>
+     </tr>
+     <tr>
+      <th>&#946;<sub>mm2</sub></th>
+      <th>流动人口非耐多药肺结核病患者与流动人口易感者接触的传染率</th>
+     </tr>
+     <tr>
+      <th>&#946;<sub>ml1</sub></th>
+      <th>户籍人口耐多药肺结核病患者与流动人口易感者接触的传染率</th>
+     </tr>
+     <tr>
+      <th>&#946;<sub>ml2</sub></th>
+      <th>户籍人口非耐多药肺结核病患者与流动人口易感者接触的传染率</th>
+     </tr>
+     <tr>
+      <th>&#954;<sub>m</sub></th>
+      <th>流动人口潜伏感染者向活动性肺结核发病的进展率</th>
+     </tr>
+     <tr>
+      <th>&nu;<sub>m</sub></th>
+      <th>流动人口新发肺结核病患者中耐多药的比例</th>
+     </tr>
+     <tr>
+      <th>&#945;<sub>m1</sub></th>
+      <th>流动人口耐多药肺结核病患者的全死因死亡率</th>
+     </tr>
+     <tr>
+      <th>&#945;<sub>m2</sub></th>
+      <th>流动人口非耐多药肺结核病患者的全死因死亡率</th>
+     </tr>
+     <tr>
+      <th>&#961;<sub>m</sub></th>
+      <th>流动人口肺结核病患者获得性耐多药率</th>
+     </tr>
+     <tr>
+      <th>D<sub>m</sub></th>
+      <th>流动人口肺结核病患者DOTS覆盖率</th>
+     </tr>
+     <tr>
+      <th>&tau;<sub>m</sub></th>
+      <th>流动人口活动性肺结核病患者发现率</th>
+     </tr>
+     <tr>
+      <th>&#947;<sub>m1</sub></th>
+      <th>DOTS策略覆盖的流动人口耐多药肺结核病患者的治疗成功率</th>
+     </tr>
+     <tr>
+      <th>&#947;<sub>m2</sub></th>
+      <th>DOTS策略覆盖的流动人口非耐多药肺结核病患者的治疗成功率</th>
+     </tr>
+     <tr>
+      <th>&#956;<sub>m</sub></th>
+      <th>流动人口年均自然死亡率</th>
+     </tr>
+     <tr>
+      <th>&#923;<sub>l</sub></th>
+      <th>户籍人口年均补充数</th>
+     </tr>
+     <tr>
+      <th>&#946;<sub>ll1</sub></th>
+      <th>户籍人口耐多药肺结核病患者与户籍人口易感接触的传染率</th>
+     </tr>
+     <tr>
+      <th>&#946;<sub>ll2</sub></th>
+      <th>户籍人口非耐多药肺结核病患者与户籍人口易感接触的传染率</th>
+     </tr>
+     <tr>
+      <th>&#946;<sub>lm1</sub></th>
+      <th>流动人口耐多药肺结核病患者与户籍人口易感接触的传染率</th>
+     </tr>
+     <tr>
+      <th>&#946;<sub>lm2</sub></th>
+      <th>流动人口非耐多药肺结核病患者与户籍人口易感接触的传染率</th>
+     </tr>
+     <tr>
+      <th>&#954;<sub>l</sub></th>
+      <th>户籍人口潜伏感染者向活动性肺结核发病的进展率</th>
+     </tr>
+     <tr>
+      <th>&nu;<sub>l</sub></th>
+      <th>户籍人口新发肺结核病患者中耐多药的比例</th>
+     </tr>
+     <tr>
+      <th>&#945;<sub>l1</sub></th>
+      <th>户籍人口耐多药肺结核病患者的全死因死亡率</th>
+     </tr>
+     <tr>
+      <th>&#945;<sub>l2</sub></th>
+      <th>户籍人口非耐多药肺结核病患者的全死因死亡率</th>
+     </tr>
+     <tr>
+      <th>&#961;<sub>l</sub></th>
+      <th>户籍人口肺结核病患者获得性耐多药率</th>
+     </tr>
+     <tr>
+      <th>D<sub>l</sub></th>
+      <th>户籍人口肺结核病患者DOTS覆盖率</th>
+     </tr>
+     <tr>
+      <th>&tau;<sub>l</sub></th>
+      <th>户籍人口活动性肺结核病患者发现率</th>
+     </tr>
+     <tr>
+      <th>&#947;<sub>l1</sub></th>
+      <th>DOTS策略覆盖的户籍人口耐多药肺结核病患者的治疗成功率</th>
+     </tr>
+     <tr>
+      <th>&#947;<sub>l2</sub></th>
+      <th>DOTS策略覆盖的户籍人口非耐多药肺结核病患者的治疗成功率</th>
+     </tr>
+     <tr>
+      <th>&#956;<sub>l</sub></th>
+      <th>户籍人口年均自然死亡率</th>
+     </tr>
+     
+     
+    </tbody>
+  </table>
+  <div><p><br/></p></div>
+  </div>                  
+                  
+                  
+                  
+                  
+                </div>
+                <div class="tab-pane" data-value="模型使用" id="tab-7780-2">
+                  <p style="margin-bottom: 11px;margin-top: 22px;font-size:22px;">以上海地区为例</p>
+                  
+                  
+<div class="row ">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group shiny-input-container">
+              <label for="S_m">输入S<sub>m</sub></label>
+              <input id="S_m" type="number" class="form-control" value="4416831"/>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group shiny-input-container">
+              <label for="E_m">输入E<sub>m</sub></label>
+              <input id="E_m" type="number" class="form-control" value="1538961"/>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group shiny-input-container">
+              <label for="I_m1">输入I<sub>m1</sub></label>
+              <input id="I_m1" type="number" class="form-control" value="246"/>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group shiny-input-container">
+              <label for="I_m2">输入I<sub>m2</sub></label>
+              <input id="I_m2" type="number" class="form-control" value="3962"/>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group shiny-input-container">
+              <label for="R_m">输入R<sub>m</sub></label>
+              <input id="R_m" type="number" class="form-control" value="1442"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height:3px;"></div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group shiny-input-container">
+              <label for="S_l">输入S<sub>l</sub></label>
+              <input id="S_l" type="number" class="form-control" value="10347085"/>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group shiny-input-container">
+              <label for="E_l">输入E<sub>l</sub></label>
+              <input id="E_l" type="number" class="form-control" value="3259685"/>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group shiny-input-container">
+              <label for="I_l1">输入I<sub>l1</sub></label>
+              <input id="I_l1" type="number" class="form-control" value="226"/>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group shiny-input-container">
+              <label for="I_l2">输入I<sub>l2</sub></label>
+              <input id="I_l2" type="number" class="form-control" value="4004"/>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-group shiny-input-container">
+              <label for="R_l">输入R<sub>l</sub></label>
+              <input id="R_l" type="number" class="form-control" value="2683"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="col-sm-8">
+      <div id="distPlot" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+    </div>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" data-value="乙肝" id="tab-2877-10"></div>
+        <div class="tab-pane" data-value="爆发" id="tab-2877-11"></div>
+        <div class="tab-pane" data-value="传播" id="tab-2877-12"></div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

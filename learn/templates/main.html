@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+  <html xmlns:th="http://www.thymeleaf.org">
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../../static/css/materialize.min.css" media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="../../static/js/pagination.css" />
+  <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+
+  <!--Let browser know website is optimized for mobile
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  -->
+  </head>
+
+
+
+<body >
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../static/js/materialize.min.js"></script>
+  <script type="text/javascript" src="../../static/js/materialize.js"></script>
+  <script type="text/javascript" src="../../static/js/worldcloud.js"></script>
+  <script type="text/javascript" src="../../static/js/echart_bar_op.js"></script>
+  <script type="text/javascript" src="../../static/js/query.js"></script>
+
+
+  <!-- <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script> -->
+       <!-- <script type="text/javascript" src="js/map_op.js"></script> -->
+  
+
+<nav class=" teal darken-1" role="navigation">
+	<div class="row">
+		<div class="col s4">
+<!-- 			<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">疾病分析与预测平台</a>
+		</div> -->
+	</div>
+    <!-- <div class="nav-wrapper"><a id="logo-container" href="#" class="brand-logo">疾病预测分析平台</a> -->
+
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#">设置</a></li>
+        </ul>
+
+        <ul class="center-align" align="center" style="color:white;font-size: 26px;margin-left:100px" >传染病预警预测模型</ul>
+
+        <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+{#      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>#}
+
+    </div>
+  </nav>
+
+  <!--图标样式-->
+<link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../static/css/index.css" />
+
+<div id="main_body">
+    <div class="s-side">
+	<ul>
+		<!--这部分是导航栏信息。-->
+		<li class="s-firstItem first">
+			<a href="/home">
+				<i class="fa fa-home"></i>
+				<span>首页</span>
+			</a>
+		</li>
+
+{# ——————————————————流感#}
+		<li class="first">
+			<div class="d-firstNav s-firstNav clearfix">
+				<i class="fa fa-bars"></i>
+				<span>流感</span>
+				<i class="fa fa-caret-right fr "></i>
+			</div>
+			<ul class="d-firstDrop s-firstDrop">
+				<li>
+					<div class="d-secondNav s-secondNav">
+						<i class="fa fa-minus-square-o"></i>
+						<span>数据</span>
+						<i class="fa fa-caret-right fr"></i>
+					</div>
+					<ul class="d-secondDrop s-secondDrop">
+						<li class="s-thirdItem">
+							<a href="monitor_data_page">监测数据</a>
+						</li>
+						<li class="s-thirdItem">
+							<a href="/NetDataPage?disease=LiuGan">网络数据</a>
+						</li>
+					</ul>
+				</li>
+
+				<li>
+					<div class="d-secondNav s-secondNav">
+						<i class="fa fa-minus-square-o"></i>
+						<span>时空动态分布</span>
+
+					</div>
+				</li>
+
+                 <li>
+					<div class="d-secondNav s-secondNav">
+						<i class="fa fa-minus-square-o"></i>
+						<span>预警</span>
+						<i class="fa fa-caret-right fr"></i>
+					</div>
+					<ul class="d-secondDrop s-secondDrop">
+						<li class="s-thirdItem">
+							<a href="#">爆发</a>
+						</li>
+						<li class="s-thirdItem">
+							<a href="#">传播</a>
+						</li>
+					</ul>
+				</li>
+
+
+			</ul>
+		</li>
+
+{#		————————登革热#}
+        <li class="first">
+			<div class="d-firstNav s-firstNav clearfix">
+				<i class="fa fa-bars"></i>
+				<span>登革热</span>
+				<i class="fa fa-caret-right fr "></i>
+			</div>
+			<ul class="d-firstDrop s-firstDrop">
+				<li>
+					<div class="d-secondNav s-secondNav">
+						<i class="fa fa-minus-square-o"></i>
+						<span>数据</span>
+						<i class="fa fa-caret-right fr"></i>
+					</div>
+					<ul class="d-secondDrop s-secondDrop">
+						<li class="s-thirdItem">
+							<a href="#">监测数据</a>
+						</li>
+						<li class="s-thirdItem">
+							<a href="/NetDataPage?disease=DengGeRe">网络数据</a>
+						</li>
+					</ul>
+				</li>
+
+                 <li>
+					<div class="d-secondNav s-secondNav">
+						<i class="fa fa-minus-square-o"></i>
+						<span>预警</span>
+						<i class="fa fa-caret-right fr"></i>
+					</div>
+					<ul class="d-secondDrop s-secondDrop">
+						<li class="s-thirdItem">
+							<a href="#">爆发</a>
+						</li>
+						<li class="s-thirdItem">
+							<a href="#">传播</a>
+						</li>
+					</ul>
+				</li>
+
+                <li>
+					<div class="d-secondNav s-secondNav">
+						<i class="fa fa-minus-square-o"></i>
+						<span>预测</span>
+
+					</div>
+				</li>
+			</ul>
+		</li>
+        {#		————————肺结核#}
+        <li class="first">
+			<div class="d-firstNav s-firstNav clearfix">
+				<i class="fa fa-bars"></i>
+				<span>肺结核</span>
+				<i class="fa fa-caret-right fr "></i>
+			</div>
+			<ul class="d-firstDrop s-firstDrop">
+				<li>
+					<div class="d-secondNav s-secondNav">
+						<i class="fa fa-minus-square-o"></i>
+						<span>数据</span>
+						<i class="fa fa-caret-right fr"></i>
+					</div>
+					<ul class="d-secondDrop s-secondDrop">
+						<li class="s-thirdItem">
+							<a href="#">监测数据</a>
+						</li>
+						<li class="s-thirdItem">
+							<a href="/NetDataPage?disease=JieHe">网络数据</a>
+						</li>
+					</ul>
+				</li>
+
+                 <li>
+					<div class="d-secondNav s-secondNav">
+						<i class="fa fa-minus-square-o"></i>
+						<span>预警</span>
+						<i class="fa fa-caret-right fr"></i>
+					</div>
+					<ul class="d-secondDrop s-secondDrop">
+						<li class="s-thirdItem">
+							<a href="/RCodePage">传播</a>
+						</li>
+					</ul>
+				</li>
+
+                <li>
+					<div class="d-secondNav s-secondNav">
+						<i class="fa fa-minus-square-o"></i>
+						<span>预测</span>
+						<i class="fa fa-caret-right fr"></i>
+					</div>
+					<ul class="d-secondDrop s-secondDrop">
+						<li class="s-thirdItem">
+							<a href="#">发病</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+
+        {# ——————————————————病毒性肝炎#}
+		<li class="first">
+			<div class="d-firstNav s-firstNav clearfix">
+				<i class="fa fa-bars"></i>
+				<span>病毒性肝炎</span>
+				<i class="fa fa-caret-right fr "></i>
+			</div>
+			<ul class="d-firstDrop s-firstDrop">
+				<li>
+					<div class="d-secondNav s-secondNav">
+						<i class="fa fa-minus-square-o"></i>
+						<span>数据</span>
+						<i class="fa fa-caret-right fr"></i>
+					</div>
+					<ul class="d-secondDrop s-secondDrop">
+						<li class="s-thirdItem">
+							<a href="#">监测数据</a>
+						</li>
+					</ul>
+				</li>
+
+				<li>
+					<div class="d-secondNav s-secondNav">
+						<i class="fa fa-minus-square-o"></i>
+						<span>疾病转归</span>
+
+					</div>
+				</li>
+
+                 <li>
+					<div class="d-secondNav s-secondNav">
+						<i class="fa fa-minus-square-o"></i>
+						<span>预测</span>
+						<i class="fa fa-caret-right fr"></i>
+					</div>
+					<ul class="d-secondDrop s-secondDrop">
+						<li class="s-thirdItem">
+							<a href="#">发病</a>
+						</li>
+						<li class="s-thirdItem">
+							<a href="#">传播</a>
+						</li>
+					</ul>
+				</li>
+
+
+			</ul>
+		</li>
+
+
+	</ul>
+</div>
+    <div id="framePage">
+
+    <iframe src="{{ iframe_url }}" id='the_iframe'></iframe>
+{#      <iframe  src="http://www.baidu.com" frameBorder="0" width="900" scrolling="no" height="90"></iframe>#}
+
+</div>
+
+</div>
+
+
+
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/index.js" ></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('.carousel').carousel();
+    });
+    </script>
+
+
+
+{#    <div class="layui-body content">#}
+{#        <iframe src="./origin_main.html" frameborder="0" id="contentIframe"></iframe>#}
+{#    </div>#}
+
+
+
+</body>
+
+
+</html>
